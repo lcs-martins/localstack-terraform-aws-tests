@@ -1,4 +1,6 @@
-#variable key_name { }
+variable "name_public_key" { description = " receive via .tfvars file " }
+
+variable "public_key" { description = " receive via .tfvars file " }
 
 variable "node" {
   description = "node map"
