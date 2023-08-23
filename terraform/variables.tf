@@ -1,7 +1,3 @@
-variable "name_public_key" { description = " receive via .tfvars file " }
-
-variable "public_key" { description = " receive via .tfvars file " }
-
 variable "node" {
   description = "node map"
   type        = map(any)

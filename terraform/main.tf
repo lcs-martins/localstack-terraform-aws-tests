@@ -1,14 +1,11 @@
-provider "aws" {
-  access_key                  = "mock_access_key"
-  secret_key                  = "mock_secret_key"
-  region                      = "us-east-1"
-  s3_force_path_style         = true
-  skip_credentials_validation = true
-  skip_metadata_api_check     = true
-  skip_requesting_account_id  = true
 
-  endpoints {
-    ec2 = "http://localhost:4566"
-    #    iam = "http://localhost:4566"
+resource "aws_instance" "node" {
+  ami                         = "ami-02762e3af2996d937" #https://cloud-images.ubuntu.com/locator/
+  associate_public_ip_address = true
+  for_each                    = var.node
+
+  instance_type = each.value.instance_type
+  tags = {
+    Name = "${each.value.tags}"
   }
 }
